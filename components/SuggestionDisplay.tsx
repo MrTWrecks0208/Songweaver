@@ -155,13 +155,13 @@ const SuggestionDisplay: React.FC<SuggestionDisplayProps> = ({
                             <button
                                 onClick={onRegenerate}
                                 disabled={!feedback.trim() || isLoading}
-                                className="absolute bottom-3 right-3 p-2 bg-main hover:bg-main-dark disabled:bg-gray-700 disabled:opacity-50 text-white rounded-lg transition-all flex items-center justify-center min-w-[32px] min-h-[32px]"
-                                aria-label="Submit feedback"
+                                className="absolute bottom-3 right-3 p-2 bg-main hover:border-2 active:border-2 hover:border-emerald-400 hover:animate-ping hover:text-emerald-500 active:border-2 active:text-emerald:600 active:border-emerald-600 active:border hover:animate-pulse disabled:bg-gray-700 disabled:opacity-50 text-white rounded-lg transition-all flex items-center justify-center min-w-[32px] min-h-[32px]"
+                                aria-label="Submit"
                             >
                                 {isLoading ? (
                                     <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                                 ) : (
-                                    <PaperAirplaneIcon className="w-4 h-4" />
+                                    <PaperAirplaneIcon className="w-4 h-4 hover:animate-pulse hover:text-emerald-400 active:text-emerald:600"/>
                                 )}
                             </button>
                         </div>

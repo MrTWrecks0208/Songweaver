@@ -3,7 +3,7 @@ import { SparkleIcon } from './icons/SparkleIcon';
 import { PlaylistIcon } from './icons/PlaylistIcon';
 import { 
   Music, Mic, Layers, ArrowRight, Heart, Radio, Headphones, PlayCircle,
-  MessageSquare, Wand2, Zap, LayoutList, Share, Star, Guitar, Check, Lightbulb
+  MessageSquare, Wand2, Zap, Users, LayoutList, Share, Gem, Guitar, Check, Lightbulb
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -26,13 +26,13 @@ const Landing: React.FC<LandingProps> = ({ onSignInClick, onSignUpClick, onGuest
       </div>
 
       {/* Header */}
-      <header className="relative z-20 flex items-center justify-between px-6 md:px-10 py-4">
+      <header className="relative z-20 flex items-center justify-between px-6 md:px-10 pt-2 pb-4">
         <div className="flex items-center gap-3">
           <div className="relative group flex items-center">
             <img 
               src="/Wordmark.png?v=1.1" 
               alt="Songweaver Wordmark" 
-              className="h-36 md:h-42 object-contain transition-all hover:scale-110" 
+              className="h-36 md:h-42 object-contain transition-all" 
               onError={(e) => { 
                 e.currentTarget.style.display = 'none'; 
                 const span = document.createElement('span');
@@ -43,25 +43,16 @@ const Landing: React.FC<LandingProps> = ({ onSignInClick, onSignUpClick, onGuest
             />
           </div>
         </div>
+
         <nav className="flex items-center gap-4 md:gap-6">
-          <button onClick={onSignInClick} className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Log In</button>
-          <button onClick={onSignUpClick} className="px-5 py-2.5 rounded-full hover:animate-pulse bg-white/10 hover:bg-pink-600 text-white text-sm font-medium transition-all border border-pink-500 backdrop-blur-md">Get Started</button>
+          <button onClick={onSignInClick} className="px-5 py-2.5 rounded-full hover:animate-pulse bg-white/10 hover:bg-pink-600 text-white text-sm font-medium transition-all border border-pink-500 backdrop-blur-md">Log In</button>
+          <button onClick={onSignUpClick} className="px-5 py-2.5 rounded-full hover:animate-pulse bg-gradient-to-br from-pink-500 to-rose-600 hover:brightness-110 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] text-white text-sm font-medium transition-all border border-pink-500 backdrop-blur-md">Get Started</button>
         </nav>
       </header>
 
       {/* HERO SECTION */}
-      <main className="relative z-10 flex flex-col items-center pt-8 md:pt-12 pb-10 px-4">
-        <div className="text-center max-w-5xl mx-auto flex flex-col items-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 px-4 py-2 text-pink-500 mb-8"
-          >
-            <SparkleIcon className="w-4 h-4" />
-            <span className="text-sm font-bold uppercase tracking-wider">Meet Your New AI Songwriting Partner</span>
-          </motion.div>
-          
+      <main className="relative z-10 flex flex-col items-center pt-5 md:pt-10 pb-10 px-4">
+        <div className="text-center max-w-5xl mx-auto flex flex-col items-center">        
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -84,11 +75,11 @@ const Landing: React.FC<LandingProps> = ({ onSignInClick, onSignUpClick, onGuest
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row items-center gap-4 mb-24 w-full sm:w-auto"
+            className="flex flex-col sm:flex-row items-center gap-8 mb-30 w-full sm:w-auto"
           >
             <button 
               onClick={onSignUpClick}
-              className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 text-white font-bold text-lg hover:shadow-[0_0_30px_rgba(219,39,119,0.4)] transition-all flex items-center justify-center gap-2 group"
+              className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-br from-pink-500 to-pink-600 text-white font-bold text-lg hover:shadow-[0_0_30px_rgba(219,39,119,0.4)] transition-all flex items-center justify-center gap-2 group"
             >
               Start Writing Free
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -176,15 +167,15 @@ const Landing: React.FC<LandingProps> = ({ onSignInClick, onSignUpClick, onGuest
       </section>
 
       {/* SECTION 1: FROM IDEA TO SONG */}
-      <section className="py-24 px-6 max-w-7xl mx-auto relative z-10">
+      <section className="py-30 px-6 max-w-7xl mx-auto relative z-10">
          <div className="flex flex-col md:flex-row items-center gap-16">
             <div className="flex-1 space-y-8">
-               <div className="inline-block px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs font-bold uppercase tracking-wider text-gray-400">From Idea to Song</div>
-               <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">Feeling stuck?<br/>We can help!</h2>
+               <div className="inline-block px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs font-bold uppercase tracking-wider text-gray-400">Say Goodbye to Writer's Block</div>
+               <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">Feeling stuck?<br/>We got you!</h2>
                <p className="text-gray-400 text-lg leading-relaxed max-w-lg">
                 Whether you need help starting a song or finishing one, Songweaver's got you covered.
                </p>
-               <ul className="space-y-4 pt-4">
+               <ul className="space-y-4 pt-2">
                   {[
                      { text: 'Suggest Next Lines', icon: <MessageSquare className="w-5 h-5 text-pink-600" /> },
                      { text: 'Improve Lyrics', icon: <Wand2 className="w-5 h-5 text-pink-600" /> },
@@ -227,7 +218,7 @@ const Landing: React.FC<LandingProps> = ({ onSignInClick, onSignUpClick, onGuest
       <section className="py-24 px-6 max-w-7xl mx-auto relative z-10">
          <div className="flex flex-col md:flex-row-reverse items-center gap-16">
              <div className="flex-1 space-y-8">
-               <div className="inline-block px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs font-bold uppercase tracking-wider text-gray-400">More than just lyrics</div>
+               <div className="inline-block px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs font-bold uppercase tracking-wider text-gray-400">Not Just Lyrics</div>
                <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">Turn your words into music.</h2>
                <p className="text-gray-400 text-lg leading-relaxed max-w-lg">
                  Don’t just write lyrics—bring them to life with melody, chords, and arrangement suggestions that match your style and emotion.
@@ -254,7 +245,7 @@ const Landing: React.FC<LandingProps> = ({ onSignInClick, onSignUpClick, onGuest
                      <span className="font-bold text-white">Chords & Arrangement</span>
                      <div className="flex gap-2">
                         <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/10 text-white cursor-pointer hover:bg-white/20">Pop</span>
-                        <span className="px-3 py-1 rounded-full text-xs font-bold bg-pink-600 text-white cursor-pointer">Indie</span>
+                        <span className="px-3 py-1 rounded-full text-xs font-bold bg-pink-600 text-white cursor-pointer">Rock</span>
                         <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/10 text-white cursor-pointer hover:bg-white/20">Hip-Hop</span>
                      </div>
                   </div>
@@ -280,16 +271,16 @@ const Landing: React.FC<LandingProps> = ({ onSignInClick, onSignUpClick, onGuest
       {/* SECTION 3: GO VIRAL OR GO DEEP */}
       <section className="py-24 px-6 max-w-7xl mx-auto relative z-10 border-t border-white/5">
          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-block px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs font-bold uppercase tracking-wider text-gray-400 mb-6">Never get stuck again!</div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6">Goodbye, Writer's Block!</h2>
-            <p className="text-gray-400 text-lg leading-relaxed">
+            <div className="inline-block px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs font-bold uppercase tracking-wider text-gray-400 mb-6">AI Toolkit</div>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight mb-6">Industry-Leading AI Tools</h2>
+            <p className="text-gray-400 text-lg leading-relaxed">Our industry-leading suite of AI tools ensures you always have the best tools available to take your music to new highs.
             </p>
          </div>
          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
                { title: 'TikTok Hook Generator', icon: <Zap className="w-8 h-8 text-yellow-500 mb-4" /> },
                { title: 'Generate Full Songs with AI', icon: <Music className="w-8 h-8 text-pink-600 mb-4" /> },
-               { title: 'Radio-Ready Polish', icon: <Star className="w-8 h-8 text-[#39FF14] mb-4" /> },
+               { title: 'Radio-Ready Polish', icon: <Gem className="w-8 h-8 text-white mb-4" /> },
             ].map((feature, idx) => (
                 <div key={idx} className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col items-center text-center hover:bg-white/10 transition-colors cursor-pointer group">
                    <div className="group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
@@ -303,12 +294,12 @@ const Landing: React.FC<LandingProps> = ({ onSignInClick, onSignUpClick, onGuest
       <section className="py-24 px-6 max-w-7xl mx-auto relative z-10">
          <div className="flex flex-col md:flex-row items-center gap-16">
              <div className="flex-1 space-y-8">
-               <div className="inline-block px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs font-bold uppercase tracking-wider text-gray-400">Lennon had McCartney. Page had Plant. You have AI.</div>
+               <div className="inline-block px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs font-bold uppercase tracking-wider text-gray-400">Co-Writer</div>
                <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">A true songwriting <span className="underline decoration-inherit decoration-2"><em>partner</em></span>.</h2>
                <p className="text-gray-400 text-lg leading-relaxed max-w-lg">
-                 Get honest, unfiltered feedback on your lyrics—what works, what doesn’t, and how to improve. No fluff, just actionable insights.
+                 Lennon had McCartney. Plant had Page. You have AI.
                </p>
-               <ul className="space-y-4 pt-4">
+               <ul className="space-y-4 pt-2">
                   {[
                      { text: 'Review Lyrics', icon: <Check className="w-5 h-5 text-pink-600" /> },
                      { text: 'Check Originality', icon: <Check className="w-5 h-5 text-pink-600" /> },
@@ -350,14 +341,14 @@ const Landing: React.FC<LandingProps> = ({ onSignInClick, onSignUpClick, onGuest
          </div>
          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-               { title: 'Studio Mode', icon: <Mic className="w-5 h-5" /> },
-               { title: 'Version History', icon: <Layers className="w-5 h-5" /> },
-               { title: 'Save & Export', icon: <Share className="w-5 h-5" /> },
-               { title: 'DAW Formats', icon: <Music className="w-5 h-5" /> },
+               { title: 'Studio Mode', icon: <Mic className="w-5 h-5 text-red-500" /> },
+               { title: 'Version History', icon: <Layers className="w-5 h-5 text-yellow-500" /> },
+               { title: 'Save & Export', icon: <Share className="w-5 h-5 text-sky-500" /> },
+               { title: 'Collaboration Tools', icon: <Users className="w-5 h-5 text-emerald-500" /> },
             ].map((feature, idx) => (
                 <div key={idx} className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col items-center justify-center text-center">
-                   <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center mb-4 text-gray-300">{feature.icon}</div>
-                   <h3 className="text-sm font-bold text-white">{feature.title}</h3>
+                   <div className="flex items-center justify-center mb-4 text-gray-300">{feature.icon}</div>
+                   <h3 className="text-sm font-bold">{feature.title}</h3>
                 </div>
             ))}
          </div>
@@ -367,13 +358,13 @@ const Landing: React.FC<LandingProps> = ({ onSignInClick, onSignUpClick, onGuest
       <section className="py-32 px-6 text-center relative z-10 overflow-hidden">
          <div className="absolute inset-0 bg-gradient-to-t from-pink-600/10 to-[#0a0502] pointer-events-none z-0"></div>
          <div className="relative z-10 max-w-4xl mx-auto">
-             <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">Stop staring at unfinished songs.</h2>
+             <h2 className="text-5xl/20 md:text-7xl/20 font-extrabold tracking-tight mb-6">Stop staring<br/>at unfinished songs.</h2>
              <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto">
                 Start finishing songs—and sharing them with the world.
              </p>
              <button 
                 onClick={onSignUpClick}
-                className="px-10 py-5 rounded-full bg-white text-black font-extrabold text-xl hover:scale-105 active:scale-95 transition-all shadow-2xl flex items-center justify-center gap-3 mx-auto"
+                className="px-10 py-5 rounded-full bg-white text-black font-extrabold text-xl hover:scale-105 hover:text-white hover:bg-gradient-to-br hover:from-pink-500 hover:to-pink-600 active:scale-95 transition-all shadow-2xl flex items-center justify-center gap-3 mx-auto"
               >
                 Start Writing Free
                 <ArrowRight className="w-6 h-6" />

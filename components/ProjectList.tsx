@@ -128,13 +128,9 @@ const ProjectList: React.FC<ProjectListProps> = ({ onSelectProject, onGoToSettin
     <div className="w-full p-6 sm:p-8 min-h-screen">
       <div className="flex flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-2 sm:gap-4">
         <div className="text-left">
-          <div className="flex items-center gap-2 sm:gap-4 justify-start mb-1 sm:mb-2">
-            <img src="/Wordmark.png?v=1.1" alt="Songweaver Logo" className="h-8 sm:h-12 object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />
-            <div className="w-px h-6 sm:h-8 bg-white/10 mx-1 sm:mx-2" />
-            <h1 className="text-xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-accent-light to-accent leading-tight">
-              Your Projects
-            </h1>
-          </div>
+          <h1 className="text-xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-accent-light to-accent leading-tight mb-1 sm:mb-2 text-left">
+            Your Projects
+          </h1>
           <p className="text-xs sm:text-base text-gray-300">Manage your songs and creative ideas</p>
         </div>
         

@@ -25,10 +25,15 @@
       "properties": {
         "uid": { "type": "string" },
         "email": { "type": "string" },
+        "username": { "type": "string" },
         "displayName": { "type": "string" },
-        "photoURL": { "type": "string" }
+        "photoURL": { "type": "string" },
+        "subscription": { "type": "string", "enum": ["free", "pro", "elite"] },
+        "creditsRemaining": { "type": "number" },
+        "role": { "type": "string", "enum": ["user", "guest", "admin"] },
+        "createdAt": { "type": "string" }
       },
-      "required": ["uid", "email"]
+      "required": ["uid", "username", "subscription", "creditsRemaining"]
     },
     "ProjectVersion": {
       "title": "ProjectVersion",

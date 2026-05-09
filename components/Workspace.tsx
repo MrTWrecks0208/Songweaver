@@ -24,7 +24,7 @@ import { PencilIcon } from './icons/PencilIcon';
 import { ChatBubbleIcon } from './icons/ChatBubbleIcon';
 import { RecordIcon } from './icons/RecordIcon';
 import { MicrophoneIcon } from './icons/MicrophoneIcon';
-import { UsersIcon } from './icons/UsersIcon';
+import { Share2 } from 'lucide-react';
 import { History as HistoryIcon } from 'lucide-react';
 import { Sparkles as SparklesIcon } from 'lucide-react';
 
@@ -1154,7 +1154,6 @@ const Workspace: React.FC<WorkspaceProps> = ({ projectId, ownerId, onBack }) => 
                          <button onClick={handleBack} className="p-2 rounded-full hover:bg-white/10 transition-colors flex-shrink-0" aria-label="Go back">
                             <BackArrowIcon className="w-6 h-6 text-gray-300"/>
                         </button>
-                        <img src="/Wordmark.png?v=1.1" alt="Songweaver Logo" className="h-8 object-contain mr-2 hidden sm:block" onError={(e) => e.currentTarget.style.display = 'none'} />
                         <input 
                             value={projectTitle}
                             onChange={(e) => setProjectTitle(e.target.value)}
@@ -1171,14 +1170,14 @@ const Workspace: React.FC<WorkspaceProps> = ({ projectId, ownerId, onBack }) => 
                             </div>
                         )}
                     </div>
-                    {isOwner && (
-                        <button onClick={handleShareClick} className="p-0 transition-colors flex-shrink-0 text-sky-500 hover:text-sky-400 active:text-sky-600 relative overflow-hidden w-6 h-6 flex items-center justify-center group mr-2" aria-label="Share project" title="Share Project">
-                            <UsersIcon className="w-5 h-5" />
-                        </button>
-                    )}
                     <button onClick={() => setIsCompanionSelectorOpen(true)} className="p-0 transition-colors flex-shrink-0 text-yellow-500 hover:text-yellow-400 active:text-yellow-600 relative overflow-hidden w-6 h-6 flex items-center justify-center group" aria-label="Change companion" title="Change AI Companion">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-bot-message-square-icon lucide-bot-message-square"><path d="M12 6V2H8"/><path d="M15 11v2"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M20 16a2 2 0 0 1-2 2H8.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 4 20.286V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/><path d="M9 11v2"/></svg>
                     </button>
+                    {isOwner && (
+                        <button onClick={handleShareClick} className="p-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors flex-shrink-0 text-pink-500 hover:text-pink-400 flex items-center justify-center group" aria-label="Share project" title="Share Project">
+                            <Share2 className="w-4 h-4" />
+                        </button>
+                    )}
                 </div>
                 
                 {isShareModalOpen && (

@@ -8,8 +8,9 @@ import Workspace from './components/Workspace';
 import ProjectList from './components/ProjectList';
 import Settings from './components/Settings';
 import Sidebar from './components/Sidebar';
+import Pricing from './components/Pricing';
 
-type View = 'landing' | 'signin' | 'projects' | 'workspace' | 'settings';
+type View = 'landing' | 'signin' | 'projects' | 'workspace' | 'settings' | 'pricing';
 
 function App() {
   const [view, setView] = useState<View>('landing');
@@ -152,7 +153,17 @@ function App() {
         {view === 'projects' && user && (
           <ProjectList onSelectProject={handleSelectProject} onGoToSettings={handleGoToSettings} />
         )}
-        {view === 'settings' && user && <Settings onBack={handleBackToProjects} />}
+        {view === 'settings' && user && <Settings onBack={handleBackToProjects} onGoToPricing={() => setView('pricing')} />}
+        {view === 'pricing' && user && (
+          <Pricing 
+            onSelectPlan={(planId, cycle) => {
+              // For existing users, handle upgrade
+              console.log('Upgrading plan for existing user:', planId, cycle);
+              setView('projects');
+            }} 
+            onBack={() => setView('projects')} 
+          />
+        )}
         {view === 'workspace' && currentProjectId && user && (
            <Workspace projectId={currentProjectId} ownerId={currentProjectOwnerId || user.uid} onBack={handleBackToProjects} />
         )}

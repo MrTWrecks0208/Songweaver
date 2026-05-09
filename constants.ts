@@ -344,3 +344,70 @@ export const POPULAR_GENRES = [
 "Trap",
   "Other"
 ];
+
+export const PRICING_PLANS = [
+  {
+    id: 'free',
+    name: 'Open Mic',
+    monthlyPrice: 0,
+    yearlyPrice: 0,
+    credits: 10,
+    features: [
+      '10 AI songwriter credits',
+      'Basic AI companions',
+      'Standard lyric suggestions',
+      'Community forum access'
+    ],
+    buttonText: 'Get Started',
+    popular: false,
+    description: 'Perfect for getting started and exploring your voice.'
+  },
+  {
+    id: 'rising',
+    name: 'Rising Artist',
+    monthlyPrice: 12,
+    yearlyPrice: 120,
+    credits: 100,
+    features: [
+      '100 AI songwriter credits',
+      'All standard AI companions',
+      'Advanced rhyming brain',
+      'Cloud project sync'
+    ],
+    buttonText: 'Start Rising',
+    popular: true,
+    description: 'For the consistent creator building a catalog.'
+  },
+  {
+    id: 'headliner',
+    name: 'Headliner',
+    monthlyPrice: 24,
+    yearlyPrice: 240,
+    credits: 300,
+    features: [
+      '300 AI songwriter credits',
+      'Exclusive Headliner companions',
+      'Beat & chord suggestions',
+      'Priority generation speed'
+    ],
+    buttonText: 'Take the Stage',
+    popular: false,
+    description: 'For power users who need deep creative tools.'
+  },
+  {
+    id: 'legend',
+    name: 'Legend',
+    monthlyPrice: 48,
+    yearlyPrice: 480,
+    credits: 1000,
+    features: [
+      '1,000 AI songwriter credits/mo',
+      'All-access creative pass',
+      'Stem splitting & DAW export',
+      'Early access to beta tools'
+    ],
+    buttonText: 'Go Legendary',
+    popular: false,
+    description: 'The ultimate professional suite for visionaries.'
+  }
+];

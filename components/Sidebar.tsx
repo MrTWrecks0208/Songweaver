@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { LayoutGrid, Settings, LogOut, ChevronLeft, ChevronRight, User as UserIcon } from 'lucide-react';
+import { LayoutGrid, Settings, LogOut, ChevronLeft, ChevronRight, User as UserIcon, Star } from 'lucide-react';
 import { User, signOut } from 'firebase/auth';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
+import { getDoc, doc } from 'firebase/firestore';
 
 interface SidebarProps {
   currentView: string;
@@ -12,11 +13,29 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, user }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [credits, setCredits] = useState<number | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   
   const handleSignOut = () => {
     signOut(auth);
   };
+
+  useEffect(() => {
+    if (user) {
+      const fetchCredits = async () => {
+        try {
+          const userDoc = await getDoc(doc(db, 'users', user.uid));
+          if (userDoc.exists()) {
+            const data = userDoc.data();
+            setCredits(data.creditsRemaining ?? data.credits ?? 0);
+          }
+        } catch (err) {
+          console.error("Error fetching credits:", err);
+        }
+      };
+      fetchCredits();
+    }
+  }, [user]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -42,12 +61,12 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, user }) => {
         {isCollapsed ? <ChevronRight className="w-4 h-4 ml-0.5" /> : <ChevronLeft className="w-4 h-4 mr-0.5" />}
       </button>
 
-      <div className={`p-6 flex items-center ${isCollapsed ? 'justify-center' : 'justify-start'}`}>
-        <div className="flex items-center">
+      <div className="p-6 flex items-center justify-center">
+        <div className="flex items-center justify-center w-full">
           <img 
-            src="/Wordmark.png?v=1.1" 
+            src={isCollapsed ? "/Logo.png" : "/Wordmark.png?v=1.1"} 
             alt="Songweaver Logo" 
-            className={`${isCollapsed ? 'w-10 h-10 object-contain' : 'h-10 object-contain'}`} 
+            className={`${isCollapsed ? 'w-12 h-12' : 'h-16 w-full'} object-contain transition-all duration-300`} 
             onError={(e) => {
               e.currentTarget.style.display = 'none';
               if (!isCollapsed) {
@@ -72,11 +91,11 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, user }) => {
               title={isCollapsed ? item.label : undefined}
               className={`flex items-center gap-3 py-3 text-lg tracking-wide font-medium transition-all ${
                 isActive
-                  ? 'text-pink-600'
-                  : 'text-gray-400 hover:text-pink-400'
-              } ${isCollapsed ? 'px-0 justify-center w-12 mx-auto' : 'px-4 w-full'}`}
+                  ? 'text-white'
+                  : 'text-white/60 hover:text-white'
+              } ${isCollapsed ? 'px-0 justify-center w-12 mx-auto' : 'px-4 w-full'} ${isActive && !isCollapsed ? 'bg-white/5 rounded-xl' : ''}`}
             >
-              <Icon className="w-7 h-7 shrink-0" />
+              <Icon className={`w-7 h-7 shrink-0 ${isActive ? 'text-white' : ''}`} />
               {!isCollapsed && <span>{item.label}</span>}
             </button>
           );
@@ -92,10 +111,20 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, user }) => {
                   setView('settings');
                   setIsMenuOpen(false);
                 }}
-                className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors text-left"
+                className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-300 hover:text-pink-500 hover:bg-pink-500/10 transition-colors text-left"
               >
                 <Settings className="w-4 h-4 shrink-0" />
                 <span>Settings</span>
+              </button>
+              <button
+                onClick={() => {
+                  setView('pricing');
+                  setIsMenuOpen(false);
+                }}
+                className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-white hover:text-pink-500 hover:bg-pink-500/10 transition-colors text-left"
+              >
+                <Star className="w-4 h-4 shrink-0" />
+                <span>Pricing & Plans</span>
               </button>
               <button
                 onClick={() => {
@@ -115,7 +144,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, user }) => {
             className={`flex items-center hover:bg-white/5 rounded-xl transition-colors p-2 ${isCollapsed ? 'justify-center w-10 mx-auto' : 'gap-3 w-full'}`} 
             title={isCollapsed ? (user?.isAnonymous ? 'Guest Artist' : user?.email || '') : undefined}
           >
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-600 to-pink-500 flex items-center justify-center overflow-hidden shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center overflow-hidden shrink-0">
                {user?.photoURL ? (
                   <img src={user.photoURL} alt="Avatar" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 ) : (
@@ -124,12 +153,26 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, user }) => {
             </div>
             {!isCollapsed && (
               <div className="flex flex-col overflow-hidden text-left flex-1">
-                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider truncate">
+                 <span className="text-[10px] font-bold text-gray-200 uppercase tracking-wider truncate">
                     {user?.isAnonymous ? 'Guest Mode' : 'Account'}
                  </span>
                  <span className="text-sm font-semibold truncate text-white leading-tight">
                     {user?.isAnonymous ? 'Guest Artist' : user?.email}
                  </span>
+                 
+                 {/* Credits Progress Bar */}
+                 <div className="mt-2 w-full">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="text-[9px] font-bold text-gray-400 uppercase tracking-tighter">AI Credits</span>
+                      <span className="text-[9px] font-bold text-pink-400">{credits !== null ? credits : '--'}/50</span>
+                    </div>
+                    <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
+                      <div 
+                        className="h-full bg-gradient-to-br from-pink-500 to-pink-600 transition-all duration-1000 ease-out" 
+                        style={{ width: `${Math.min(100, ((credits || 0) / 50) * 100)}%` }}
+                      />
+                    </div>
+                 </div>
               </div>
             )}
           </button>

@@ -84,3 +84,18 @@ export interface ProjectVersion {
   feedback: string;
   audioClips: AudioClip[];
 }
+
+export type SubscriptionPlan = 'free' | 'rising' | 'headliner' | 'legend';
+
+export interface SongweaverUser {
+  uid: string;
+  email: string | null;
+  username: string;
+  displayName?: string;
+  photoURL?: string;
+  role: 'user' | 'guest' | 'admin';
+  subscription: SubscriptionPlan;
+  billingCycle: 'monthly' | 'yearly';
+  creditsRemaining: number;
+  createdAt: string;
+}
