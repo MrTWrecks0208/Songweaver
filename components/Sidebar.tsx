@@ -93,7 +93,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, user }) => {
                 isActive
                   ? 'text-white'
                   : 'text-white/60 hover:text-white'
-              } ${isCollapsed ? 'px-0 justify-center w-12 mx-auto' : 'px-4 w-full'} ${isActive && !isCollapsed ? 'bg-white/5 rounded-xl' : ''}`}
+              } ${isCollapsed ? 'px-0 justify-center w-12 mx-auto' : 'px-4 w-full'}`}
             >
               <Icon className={`w-7 h-7 shrink-0 ${isActive ? 'text-white' : ''}`} />
               {!isCollapsed && <span>{item.label}</span>}
@@ -141,7 +141,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, user }) => {
           
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`flex items-center hover:bg-white/5 rounded-xl transition-colors p-2 ${isCollapsed ? 'justify-center w-10 mx-auto' : 'gap-3 w-full'}`} 
+            className={`flex items-center transition-colors p-2 ${isCollapsed ? 'justify-center w-10 mx-auto' : 'gap-3 w-full'}`} 
             title={isCollapsed ? (user?.isAnonymous ? 'Guest Artist' : user?.email || '') : undefined}
           >
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-pink-600 flex items-center justify-center overflow-hidden shrink-0">

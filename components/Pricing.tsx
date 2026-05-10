@@ -12,9 +12,11 @@ const aiFeatureMapping: Record<string, string[]> = {
 
 interface PricingProps {
   onBack: () => void;
+  isModal?: boolean;
+  onSelectPlan?: (planId: string, billingCycle: 'monthly' | 'yearly') => void;
 }
 
-const Pricing: React.FC<PricingProps> = ({ onBack }) => {
+const Pricing: React.FC<PricingProps> = ({ onBack, isModal, onSelectPlan }) => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annually'>('monthly');
 
   const tiers = [
@@ -82,21 +84,30 @@ const Pricing: React.FC<PricingProps> = ({ onBack }) => {
   };
 
   return (
-    <div className="min-h-screen bg-main text-white p-6">
+    <div className={`${isModal ? 'bg-transparent' : 'min-h-screen bg-main'} text-white p-6`}>
       <div className="max-w-6xl mx-auto">
-        <div className="flex justify-between items-center mb-12">
-          <button onClick={onBack} className="text-gray-300 hover:text-white transition-colors">
-            &larr; Back to Projects
-          </button>
-          <div className="text-center flex-grow flex flex-col items-center">
-            <div className="flex items-center justify-center gap-3 mb-4">
-                <img src="/logo.png" alt="Songweaver Logo" className="w-12 h-12 object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />
-                <h1 className="text-4xl font-bold">Pricing Plans</h1>
+        {!isModal && (
+          <div className="flex justify-between items-center mb-12">
+            <button onClick={onBack} className="text-gray-300 hover:text-white transition-colors">
+              &larr; Back to Projects
+            </button>
+            <div className="text-center flex-grow flex flex-col items-center">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                  <img src="/logo.png" alt="Songweaver Logo" className="w-12 h-12 object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />
+                  <h1 className="text-4xl font-bold">Pricing Plans</h1>
+              </div>
+              <p className="text-gray-300">Choose the plan that fits your creative journey.</p>
             </div>
-            <p className="text-gray-300">Choose the plan that fits your creative journey.</p>
+            <div className="w-20" /> {/* Spacer for centering */}
           </div>
-          <div className="w-20" /> {/* Spacer for centering */}
-        </div>
+        )}
+
+        {isModal && (
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-2">Upgrade Your Experience</h2>
+            <p className="text-gray-400">Unlock advanced AI tools and more credits.</p>
+          </div>
+        )}
 
         <div className="flex justify-center mb-12">
           <div className="bg-white/5 p-1 rounded-full border border-white/10 flex items-center">
@@ -190,7 +201,15 @@ const Pricing: React.FC<PricingProps> = ({ onBack }) => {
                   })}
                 </ul>
                 <button
-                  onClick={() => handleSubscribe(tier.name, billingCycle === 'monthly' ? tier.priceId?.monthly : tier.priceId?.annually)}
+                  onClick={() => {
+                    const cycle = billingCycle === 'monthly' ? 'monthly' : 'yearly';
+                    const priceId = billingCycle === 'monthly' ? tier.priceId?.monthly : tier.priceId?.annually;
+                    if (onSelectPlan) {
+                      onSelectPlan(tier.name, cycle);
+                    } else {
+                      handleSubscribe(tier.name, priceId);
+                    }
+                  }}
                   disabled={tier.isCurrent}
                   className={`w-full py-2.5 md:py-3 rounded-xl font-bold transition-all text-sm md:text-base ${
                     tier.isCurrent

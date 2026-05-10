@@ -209,17 +209,20 @@ const ProjectList: React.FC<ProjectListProps> = ({ onSelectProject, onGoToSettin
           whileHover={{ scale: 1.02, y: -5 }}
           whileTap={{ scale: 0.98 }}
           onClick={handleCreateProject}
-          className="group relative flex flex-col items-center justify-center p-4 min-h-[180px] w-full max-w-[210px] mx-auto bg-white/10 border border-white/10 rounded-2xl hover:bg-white/30 transition-colors duration-300 shadow-xl overflow-hidden transform-gpu"
+          className="group relative flex flex-col items-center pt-10 pb-6 px-5 min-h-[200px] w-full max-w-[220px] mx-auto bg-white/10 border border-white/10 rounded-2xl hover:bg-white/30 transition-colors duration-300 shadow-xl overflow-hidden transform-gpu"
         >
           <div className="absolute inset-0 backdrop-blur-md pointer-events-none -z-10" />
-          <div className="py-3 px-4 rounded-xl mb-3 group-hover:scale-110 transition-transform relative flex items-center justify-center">
-            <img src="/Wordmark.png?v=1.1" alt="Songweaver Logo" className="w-20 h-20 object-contain opacity-50 absolute inset-0 m-auto mix-blend-screen -z-10 blur-md" onError={(e) => e.currentTarget.style.display = 'none'} />
-            <div className="bg-gradient-to-br from-accent-light to-accent w-12 h-12 flex items-center justify-center rounded-xl shadow-lg shadow-accent/20 relative z-10">
-              <Plus className="w-6 h-6 text-white relative z-10" />
+          
+          <div className="flex flex-col items-center text-center">
+            <div className="mb-4 group-hover:scale-110 transition-transform relative flex items-center justify-center">
+              <img src="/Wordmark.png?v=1.1" alt="Songweaver Logo" className="w-20 h-20 object-contain opacity-50 absolute inset-0 m-auto mix-blend-screen -z-10 blur-md" onError={(e) => e.currentTarget.style.display = 'none'} />
+              <div className="bg-gradient-to-br from-accent-light to-accent w-12 h-12 flex items-center justify-center rounded-xl shadow-lg shadow-accent/20 relative z-10">
+                <Plus className="w-6 h-6 text-white relative z-10" />
+              </div>
             </div>
+
+            <span className="text-xl font-bold text-white leading-tight">New Song</span>
           </div>
-          <span className="text-base font-bold text-white">New Song</span>
-          <p className="text-xs text-gray-200 mt-1">Start a new song</p>
         </motion.button>
 
         {/* Project Cards */}
@@ -239,10 +242,10 @@ const ProjectList: React.FC<ProjectListProps> = ({ onSelectProject, onGoToSettin
                 hover: { y: -8 }
               }}
               onClick={() => onSelectProject(project.id)}
-              className="group relative flex flex-col p-4 min-h-[180px] w-full max-w-[210px] mx-auto bg-white/10 rounded-2xl border border-white/10 hover:border-white/50 hover:bg-white/50 transition-colors duration-300 cursor-pointer shadow-xl overflow-hidden transform-gpu"
+              className="group relative flex flex-col items-center pt-10 pb-6 px-5 min-h-[200px] w-full max-w-[220px] mx-auto bg-white/10 rounded-2xl border border-white/10 hover:border-white/50 hover:bg-white/50 transition-colors duration-300 cursor-pointer shadow-xl overflow-hidden transform-gpu"
             >
               <div className="absolute inset-0 backdrop-blur-xl pointer-events-none -z-10" />
-              {/* Delete Button - Positioned in the corner with improved centering and animation */}
+              {/* Delete Button */}
               <motion.button
                 variants={{
                   initial: { opacity: 0, x: 10, scale: 0.75 },
@@ -257,21 +260,21 @@ const ProjectList: React.FC<ProjectListProps> = ({ onSelectProject, onGoToSettin
                 <TrashIcon className="w-5 h-5" />
               </motion.button>
 
-              <div className="flex flex-col items-center text-center flex-grow justify-center">
-                <div className="bg-gradient-to-br from-accent-light to-accent w-12 h-12 flex items-center justify-center rounded-xl mb-3 group-hover:scale-110 transition-transform shadow-lg shadow-accent/20 relative">
+              <div className="flex flex-col items-center text-center">
+                <div className="bg-gradient-to-br from-accent-light to-accent w-12 h-12 flex items-center justify-center rounded-xl mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-accent/20 relative">
                   <Music className="w-6 h-6 text-white relative z-10" />
                 </div>
-                <h4 className="text-base font-bold text-white mb-2 line-clamp-2 px-2 leading-tight" title={project.title}>
+                <h4 className="text-xl font-bold text-white line-clamp-2 px-2 leading-tight" title={project.title}>
                   {project.title}
                 </h4>
-              </div>
-
-              <div className="flex items-center justify-between text-[10px] uppercase tracking-wider font-bold">
-                <div className="flex items-center gap-2 text-gray-200">
-                  <div className="w-2 h-2 rounded-full bg-sky-500 animate-pulse" />
-                  <span>{project.companion?.name || 'Melody'}</span>
+                
+                <div className="mt-8 flex items-center justify-center gap-10 text-[10px] uppercase tracking-wider font-bold">
+                  <div className="flex items-center gap-1.5 text-gray-300">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>{project.companion?.name || 'Melody'}</span>
+                  </div>
+                  <span className="text-gray-400">{formatDate(project.lastModified)}</span>
                 </div>
-                <span className="text-gray-200">{formatDate(project.lastModified)}</span>
               </div>
               
               {/* Subtle gradient overlay on hover */}
