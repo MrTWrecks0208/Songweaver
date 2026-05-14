@@ -25,6 +25,7 @@ export enum SuggestionType {
   VERSION_HISTORY = 'Version History',
   STEM_SPLITTER = 'Stem Splitter',
   GENERATE_TIKTOK_HOOK = 'Generate Hook for TikTok',
+  GENERATE_STORY = 'Generate Story',
 
   GENERATE_SONG = 'Generate Song',
   RADIO_READY = 'Radio-Ready Polish',
@@ -87,7 +88,7 @@ export interface ProjectVersion {
 
 export type SubscriptionPlan = 'free' | 'rising' | 'headliner' | 'legend';
 
-export interface SongweaverUser {
+export interface LyricallyUser {
   uid: string;
   email: string | null;
   username: string;

@@ -71,7 +71,7 @@ const CheckoutUI: React.FC<CheckoutProps & { isScriptLoaded: boolean }> = ({ pla
                         currency_code: "USD",
                         value: price.toString(),
                       },
-                      description: `Songweaver ${plan.name} Subscription (${billingCycle}) - ${plan.credits} Credits`
+                      description: `Lyrically ${plan.name} Subscription (${billingCycle}) - ${plan.credits} Credits`
                     }],
                   });
                 }}

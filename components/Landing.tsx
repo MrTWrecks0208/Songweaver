@@ -30,14 +30,14 @@ const Landing: React.FC<LandingProps> = ({ onSignInClick, onSignUpClick, onGuest
         <div className="flex items-center gap-3">
           <div className="relative group flex items-center">
             <img 
-              src="/Wordmark.png?v=1.1" 
-              alt="Songweaver Wordmark" 
-              className="h-36 md:h-42 object-contain transition-all" 
+              src="/Lyrically_Logo+Wordmark_T.png" 
+              alt="Lyrically Logo" 
+              className="h-28 md:h-32 object-contain transition-all" 
               onError={(e) => { 
                 e.currentTarget.style.display = 'none'; 
                 const span = document.createElement('span');
                 span.className = "text-3xl md:text-5xl font-bold tracking-tight text-white mb-0.5 animate-pulse bg-gradient-to-br from-pink-500 to-pink-600 bg-clip-text text-transparent";
-                span.innerText = "Songweaver";
+                span.innerText = "Lyrically";
                 e.currentTarget.parentElement?.appendChild(span);
               }} 
             />
@@ -68,7 +68,7 @@ const Landing: React.FC<LandingProps> = ({ onSignInClick, onSignUpClick, onGuest
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="text-lg md:text-xl text-gray-400 max-w-2xl mb-12 leading-relaxed shrink-0"
           >
-           From first ideas to final polish, Songweaver helps you write, shape, and explore songs without interrupting your creative flow.
+           From first ideas to final polish, Lyrically helps you write, shape, and explore songs without interrupting your creative flow.
           </motion.p>
           
           <motion.div 
@@ -173,7 +173,7 @@ const Landing: React.FC<LandingProps> = ({ onSignInClick, onSignUpClick, onGuest
                <div className="inline-block px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs font-bold uppercase tracking-wider text-gray-400">Say Goodbye to Writer's Block</div>
                <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-tight">Feeling stuck?<br/>We got you!</h2>
                <p className="text-gray-400 text-lg leading-relaxed max-w-lg">
-                Whether you need help starting a song or finishing one, Songweaver's got you covered.
+                Whether you need help starting a song or finishing one, Lyrically's got you covered.
                </p>
                <ul className="space-y-4 pt-2">
                   {[
@@ -374,7 +374,7 @@ const Landing: React.FC<LandingProps> = ({ onSignInClick, onSignUpClick, onGuest
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-white/10 py-12 px-6 text-center text-gray-500 text-sm">
-        <p>© 2026 Songweaver. Your AI Songwriting Partner.</p>
+        <p>© 2026 Lyrically. Your AI Songwriting Partner.</p>
       </footer>
     </div>
   );

@@ -6,7 +6,7 @@ import { auth } from '../firebase';
 const aiFeatureMapping: Record<string, string[]> = {
   'Core Writing Tools': ['Suggest Next Lines', 'Find Rhymes', 'Review Lyrics', 'Check Common Phrases', 'Suggest Structure'],
   'All Writing Tools': ['All Core Tools', 'Prompt to Lyrics', 'Improve Lyrics', 'Suggest Chords', 'Suggest Beat', 'Export Project as ZIP', 'Sentiment Analysis'],
-  'Advanced AI Tools': ['All Writing Tools', 'Fit to Your Style', 'Suggest Melody', 'Change Style', 'Tone Switcher', 'Check Originality', 'Stem Splitter', 'Generate Hook for TikTok'],
+  'Advanced AI Tools': ['All Writing Tools', 'Fit to Your Style', 'Suggest Melody', 'Change Style', 'Tone Switcher', 'Check Originality', 'Stem Splitter', 'Generate Hook for TikTok', 'Generate Story'],
   'All Features Unlocked': ['All Advanced Tools', 'Generate Song', 'Radio-Ready Polish', 'Studio Mode', 'Export Recordings to DAW Formats']
 };
 
@@ -93,7 +93,7 @@ const Pricing: React.FC<PricingProps> = ({ onBack, isModal, onSelectPlan }) => {
             </button>
             <div className="text-center flex-grow flex flex-col items-center">
               <div className="flex items-center justify-center gap-3 mb-4">
-                  <img src="/logo.png" alt="Songweaver Logo" className="w-12 h-12 object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />
+                  <img src="/Lyrically-Logo.png" alt="Lyrically Logo" className="w-9 h-9 object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />
                   <h1 className="text-4xl font-bold">Pricing Plans</h1>
               </div>
               <p className="text-gray-300">Choose the plan that fits your creative journey.</p>
@@ -158,7 +158,7 @@ const Pricing: React.FC<PricingProps> = ({ onBack, isModal, onSelectPlan }) => {
                     Most Popular
                   </div>
                 )}
-                <h3 className="text-xl md:text-2xl font-bold mb-2">{tier.name}</h3>
+                <h3 className="text-xl md:text-2xl font-bold mt-2 mb-2">{tier.name}</h3>
                 <p className="text-gray-400 text-xs md:text-sm mb-6 h-10">{tier.description}</p>
                 <div className="mb-6 md:mb-8 relative flex items-center">
                   <div className="flex items-baseline">

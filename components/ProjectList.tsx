@@ -209,13 +209,13 @@ const ProjectList: React.FC<ProjectListProps> = ({ onSelectProject, onGoToSettin
           whileHover={{ scale: 1.02, y: -5 }}
           whileTap={{ scale: 0.98 }}
           onClick={handleCreateProject}
-          className="group relative flex flex-col items-center pt-10 pb-6 px-5 min-h-[200px] w-full max-w-[220px] mx-auto bg-white/10 border border-white/10 rounded-2xl hover:bg-white/30 transition-colors duration-300 shadow-xl overflow-hidden transform-gpu"
+          className="group relative flex flex-col items-center pt-8 pb-4 px-4 min-h-[120px] w-full min-w-[160px] mx-auto bg-white/10 border border-white/10 rounded-2xl hover:bg-white/30 transition-colors duration-300 shadow-xl overflow-hidden transform-gpu"
         >
           <div className="absolute inset-0 backdrop-blur-md pointer-events-none -z-10" />
           
           <div className="flex flex-col items-center text-center">
-            <div className="mb-4 group-hover:scale-110 transition-transform relative flex items-center justify-center">
-              <img src="/Wordmark.png?v=1.1" alt="Songweaver Logo" className="w-20 h-20 object-contain opacity-50 absolute inset-0 m-auto mix-blend-screen -z-10 blur-md" onError={(e) => e.currentTarget.style.display = 'none'} />
+            <div className="mb-6 group-hover:scale-110 transition-transform relative flex items-center justify-center">
+              <img src="/Lyrically-Logo.png" alt="Lyrically Logo" className="w-14 h-14 object-contain opacity-50 absolute inset-0 m-auto mix-blend-screen -z-10 blur-md" onError={(e) => e.currentTarget.style.display = 'none'} />
               <div className="bg-gradient-to-br from-accent-light to-accent w-12 h-12 flex items-center justify-center rounded-xl shadow-lg shadow-accent/20 relative z-10">
                 <Plus className="w-6 h-6 text-white relative z-10" />
               </div>
@@ -242,7 +242,7 @@ const ProjectList: React.FC<ProjectListProps> = ({ onSelectProject, onGoToSettin
                 hover: { y: -8 }
               }}
               onClick={() => onSelectProject(project.id)}
-              className="group relative flex flex-col items-center pt-10 pb-6 px-5 min-h-[200px] w-full max-w-[220px] mx-auto bg-white/10 rounded-2xl border border-white/10 hover:border-white/50 hover:bg-white/50 transition-colors duration-300 cursor-pointer shadow-xl overflow-hidden transform-gpu"
+              className="group relative flex flex-col items-center pt-8 pb-4 px-4 min-h-[120px] w-full min-w-[160px] mx-auto bg-white/10 rounded-2xl border border-white/10 hover:border-white/50 hover:bg-white/50 transition-colors duration-300 cursor-pointer shadow-xl overflow-hidden transform-gpu"
             >
               <div className="absolute inset-0 backdrop-blur-xl pointer-events-none -z-10" />
               {/* Delete Button */}
@@ -261,7 +261,7 @@ const ProjectList: React.FC<ProjectListProps> = ({ onSelectProject, onGoToSettin
               </motion.button>
 
               <div className="flex flex-col items-center text-center">
-                <div className="bg-gradient-to-br from-accent-light to-accent w-12 h-12 flex items-center justify-center rounded-xl mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-accent/20 relative">
+                <div className="bg-gradient-to-br from-accent-light to-accent w-12 h-12 flex items-center justify-center rounded-xl mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-accent/20 relative">
                   <Music className="w-6 h-6 text-white relative z-10" />
                 </div>
                 <h4 className="text-xl font-bold text-white line-clamp-2 px-2 leading-tight" title={project.title}>

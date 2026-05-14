@@ -268,7 +268,7 @@ const SignIn: React.FC<SignInProps> = ({ onStart, initialIsSignUp = false, onBac
             </div>
           </div>
           <h2 className="text-3xl font-bold text-white mb-4">Welcome aboard!</h2>
-          <p className="text-gray-400 mb-8">Your Songweaver account has been created successfully. Your creative credits are ready to use.</p>
+          <p className="text-gray-400 mb-8">Your Lyrically account has been created successfully. Your creative credits are ready to use.</p>
           <button 
             onClick={onStart}
             className="w-full py-4 bg-accent text-white rounded-2xl font-bold hover:bg-accent-light transition-all shadow-lg shadow-accent/20"
@@ -301,7 +301,7 @@ const SignIn: React.FC<SignInProps> = ({ onStart, initialIsSignUp = false, onBac
         
         <div className="text-center mb-8 pt-4">
           <div className="flex items-center justify-center mb-6">
-            <img src="/Wordmark.png?v=1.1" alt="Songweaver Wordmark" className="h-12 object-contain" />
+            <img src="/Lyrically_Logo+Wordmark_T.png" alt="Lyrically Wordmark" className="h-9 object-contain" />
           </div>
           <h2 className="text-2xl font-bold text-white mb-2">
             {isSignUp ? 'Create an Account' : 'Welcome Back'}

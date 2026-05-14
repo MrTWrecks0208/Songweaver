@@ -4,7 +4,7 @@ import { User, ArrowLeft, Save, CreditCard, Sparkles } from 'lucide-react';
 import { auth, db } from '../firebase';
 import { updateProfile } from 'firebase/auth';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import { SongweaverUser } from '../types';
+import { LyricallyUser } from '../types';
 
 interface SettingsProps {
   onBack: () => void;
@@ -13,7 +13,7 @@ interface SettingsProps {
 
 const Settings: React.FC<SettingsProps> = ({ onBack, onGoToPricing }) => {
   const [displayName, setDisplayName] = useState(auth.currentUser?.displayName || '');
-  const [userData, setUserData] = useState<SongweaverUser | null>(null);
+  const [userData, setUserData] = useState<LyricallyUser | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [saveMessage, setSaveMessage] = useState('');
 
@@ -22,7 +22,7 @@ const Settings: React.FC<SettingsProps> = ({ onBack, onGoToPricing }) => {
       if (!auth.currentUser) return;
       const userDoc = await getDoc(doc(db, 'users', auth.currentUser.uid));
       if (userDoc.exists()) {
-        setUserData(userDoc.data() as SongweaverUser);
+        setUserData(userDoc.data() as LyricallyUser);
       }
     };
     fetchUserData();
@@ -62,7 +62,7 @@ const Settings: React.FC<SettingsProps> = ({ onBack, onGoToPricing }) => {
         </button>
 
         <div className="flex items-center gap-4 mb-8">
-            <img src="/Wordmark.png?v=1.1" alt="Songweaver Logo" className="h-12 object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />
+            <img src="/Lyrically_Logo+Wordmark_T.png" alt="Lyrically Logo" className="h-9 object-contain" onError={(e) => e.currentTarget.style.display = 'none'} />
             <div className="w-px h-8 bg-white/10 mx-2" />
             <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-accent to-accent-light">
               Settings

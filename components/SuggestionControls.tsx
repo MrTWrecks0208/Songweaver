@@ -9,7 +9,7 @@ import { ChordsIcon } from './icons/ChordsIcon';
 import { RhymeIcon } from './icons/RhymeIcon';
 import { ReviewIcon } from './icons/ReviewIcon';
 import { ShieldCheckIcon } from './icons/ShieldCheckIcon';
-import { Pencil as PencilIcon, Sparkles as SparklesIcon, Music as MusicIcon, Radio as RadioIcon, Drum as DrumIcon, ChevronDown, ChevronUp, Archive as ArchiveIcon, History as HistoryIcon, Scissors as ScissorsIcon, Mic as MicIcon, FileUp as FileUpIcon, User as UserIcon, Search as SearchIcon, Smile as SmileIcon, Sliders as SlidersIcon, Smartphone as SmartphoneIcon } from 'lucide-react';
+import { Pencil as PencilIcon, Sparkles as SparklesIcon, Music as MusicIcon, Radio as RadioIcon, Drum as DrumIcon, ChevronDown, ChevronUp, Archive as ArchiveIcon, History as HistoryIcon, Scissors as ScissorsIcon, Mic as MicIcon, FileUp as FileUpIcon, User as UserIcon, Search as SearchIcon, Smile as SmileIcon, Sliders as SlidersIcon, Smartphone as SmartphoneIcon, BookOpen } from 'lucide-react';
 
 interface SuggestionControlsProps {
   onSuggestionSelect: (type: SuggestionType) => void;
@@ -39,6 +39,7 @@ const allOptions = [
   { type: SuggestionType.VERSION_HISTORY, icon: <HistoryIcon className="w-4 h-4" /> },
   { type: SuggestionType.STEM_SPLITTER, icon: <ScissorsIcon className="w-4 h-4" /> },
   { type: SuggestionType.GENERATE_TIKTOK_HOOK, icon: <SmartphoneIcon className="w-4 h-4" /> },
+  { type: SuggestionType.GENERATE_STORY, icon: <BookOpen className="w-4 h-4" /> },
   { type: SuggestionType.GENERATE_SONG, icon: <MusicIcon className="w-4 h-4" /> },
   { type: SuggestionType.RADIO_READY, icon: <RadioIcon className="w-4 h-4" /> },
   { type: SuggestionType.STUDIO_MODE, icon: <MicIcon className="w-4 h-4" /> },

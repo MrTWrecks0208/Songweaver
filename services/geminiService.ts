@@ -244,6 +244,25 @@ Task:
 4. Keep the duration strictly around 30 seconds of perceived pacing.
 5. Provide a brief explanation of why this hook works well for TikTok.`;
       break;
+
+    case SuggestionType.GENERATE_STORY:
+      prompt = `I want to generate a compelling story or narrative to inspire a new song.
+      
+Prompt/Theme (if any):
+---
+${style || lyrics || "(No specific theme provided, surprise me with a deep narrative)"}
+---
+
+Task:
+1. Generate a detailed story or "vignette" (200-400 words) that would make for a powerful song subject.
+2. Focus on vivid imagery, emotional depth, and a clear narrative arc.
+3. Suggest a few "Key Lyrical Hooks" or titles inspired by this story.
+4. Explain why this story would translate well into music (e.g., "The rhythmic pacing of the journey" or "The emotional climax at the end").
+5. The tone should be evocative and artistic.
+
+Format with clear Markdown headings.`;
+      break;
+
     case SuggestionType.GENERATE_SONG:
     case SuggestionType.PROMPT_TO_LYRICS:
       prompt = `I want to generate lyrics or a song based on a prompt.

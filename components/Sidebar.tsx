@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { LayoutGrid, Settings, LogOut, ChevronLeft, ChevronRight, User as UserIcon, Star } from 'lucide-react';
+import { LayoutGrid, Settings, LogOut, ChevronLeft, ChevronRight, User as UserIcon } from 'lucide-react';
+import { PricingPlansIcon } from './icons/PricingPlansIcon';
 import { User, signOut } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { getDoc, doc } from 'firebase/firestore';
@@ -52,7 +53,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, user }) => {
   ];
 
   return (
-    <div className={`relative ${isCollapsed ? 'w-20' : 'w-64'} bg-[#0f102e] border-r border-white/5 flex flex-col h-full flex-shrink-0 transition-all duration-300 z-50`}>
+    <div className={`relative ${isCollapsed ? 'w-20' : 'w-52'} bg-[#0f102e] border-r border-white/5 flex flex-col h-full flex-shrink-0 transition-all duration-300 z-50`}>
       <button
         onClick={() => setIsCollapsed(!isCollapsed)}
         title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
@@ -61,18 +62,18 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, user }) => {
         {isCollapsed ? <ChevronRight className="w-4 h-4 ml-0.5" /> : <ChevronLeft className="w-4 h-4 mr-0.5" />}
       </button>
 
-      <div className="p-6 flex items-center justify-center">
+      <div className={`p-2 ${isCollapsed ? 'mt-6 mb-2' : 'mt-6 mb-2'} flex items-center justify-center`}>
         <div className="flex items-center justify-center w-full">
           <img 
-            src={isCollapsed ? "/Logo.png" : "/Wordmark.png?v=1.1"} 
-            alt="Songweaver Logo" 
-            className={`${isCollapsed ? 'w-12 h-12' : 'h-16 w-full'} object-contain transition-all duration-300`} 
+            src={isCollapsed ? "/Lyrically-Logo.png" : "/Lyrically_Logo+Wordmark_T.png"} 
+            alt="Lyrically Logo" 
+            className={`${isCollapsed ? 'w-14 h-14' : 'h-18 w-full'} object-contain transition-all duration-300`} 
             onError={(e) => {
               e.currentTarget.style.display = 'none';
               if (!isCollapsed) {
                 const span = document.createElement('span');
                 span.className = "text-xl font-bold tracking-tight text-white truncate animate-pulse";
-                span.innerText = "Songweaver";
+                span.innerText = "Lyrically";
                 e.currentTarget.parentElement?.appendChild(span);
               }
             }} 
@@ -80,7 +81,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, user }) => {
         </div>
       </div>
 
-      <nav className="flex-1 px-4 flex flex-col gap-2 mt-2">
+      <nav className="flex-1 flex flex-col gap-2 mt-2">
         {navItems.map((item) => {
           const isActive = currentView === item.id || (item.id === 'projects' && currentView === 'workspace');
           const Icon = item.icon;
@@ -89,14 +90,14 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, user }) => {
               key={item.id}
               onClick={() => setView(item.id)}
               title={isCollapsed ? item.label : undefined}
-              className={`flex items-center gap-3 py-3 text-lg tracking-wide font-medium transition-all ${
+              className={`flex items-center gap-3 py-3 text-lg tracking-wide font-medium transition-all group ${
                 isActive
-                  ? 'text-white'
+                  ? 'text-white hover:text-pink-400/50 active:text-pink-500'
                   : 'text-white/60 hover:text-white'
-              } ${isCollapsed ? 'px-0 justify-center w-12 mx-auto' : 'px-4 w-full'}`}
+              } ${isCollapsed ? 'px-0 justify-center w-12 mx-auto' : 'w-full justify-center'}`}
             >
-              <Icon className={`w-7 h-7 shrink-0 ${isActive ? 'text-white' : ''}`} />
-              {!isCollapsed && <span>{item.label}</span>}
+              <Icon className={`w-5 h-5 shrink-0 transition-colors ${isActive ? 'group-hover:text-pink-500 text-white' : 'group-hover:text-white text-white/60'}`} />
+              {!isCollapsed && <span className="transition-colors">{item.label}</span>}
             </button>
           );
         })}
@@ -105,7 +106,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, user }) => {
       <div className={`p-4 mt-auto border-t border-white/5 flex flex-col gap-3 ${isCollapsed ? 'items-center' : ''}`} ref={menuRef}>
         <div className="relative w-full">
           {isMenuOpen && (
-            <div className={`absolute bottom-full mb-2 bg-[#1a1b3b] border border-white/10 rounded-xl shadow-lg shadow-black/50 overflow-hidden flex flex-col w-56 ${isCollapsed ? 'left-10' : 'left-0'}`}>
+            <div className={`absolute bottom-full mb-2 bg-[#1a1b3b] border border-white/10 rounded-xl shadow-lg shadow-black/50 overflow-hidden flex flex-col w-48 ${isCollapsed ? 'left-10' : 'left-0'}`}>
               <button
                 onClick={() => {
                   setView('settings');
@@ -123,7 +124,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setView, user }) => {
                 }}
                 className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-white hover:text-pink-500 hover:bg-pink-500/10 transition-colors text-left"
               >
-                <Star className="w-4 h-4 shrink-0" />
+                <PricingPlansIcon className="w-5 h-5 shrink-0" />
                 <span>Pricing & Plans</span>
               </button>
               <button
