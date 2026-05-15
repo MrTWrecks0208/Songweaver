@@ -204,6 +204,13 @@ const Pricing: React.FC<PricingProps> = ({ onBack, isModal, onSelectPlan }) => {
                   onClick={() => {
                     const cycle = billingCycle === 'monthly' ? 'monthly' : 'yearly';
                     const priceId = billingCycle === 'monthly' ? tier.priceId?.monthly : tier.priceId?.annually;
+                    
+                    // Specific override for Rising Artist Monthly PayPal link
+                    if (tier.name === 'Rising Artist' && billingCycle === 'monthly') {
+                      window.location.href = 'https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-1LL721275R277640VNH72T4Y';
+                      return;
+                    }
+
                     if (onSelectPlan) {
                       onSelectPlan(tier.name, cycle);
                     } else {

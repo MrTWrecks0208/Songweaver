@@ -419,19 +419,19 @@ const Workspace: React.FC<WorkspaceProps> = ({ projectId, ownerId, onBack }) => 
                             console.warn("Firebase Storage not configured or unreachable. Falling back to base64.");
                             isStorageAvailable = false;
                         } else {
-                            console.error("Failed to upload AI song to storage, falling back to base64:", uploadError);
+                            console.error("Failed to upload song to storage, falling back to base64:", uploadError);
                         }
                     }
                 }
 
                 const newClip: AudioClip = {
                     id: clipId,
-                    name: `AI Song - ${projectTitle}`,
+                    name: `Song - ${projectTitle}`,
                     timestamp: Date.now(),
                     audioData: audioDataUrl,
                 };
                 setAudioClips(prev => [newClip, ...prev]);
-                setSuggestion('AI Song generated successfully! You can find it in the Recordings tab.');
+                setSuggestion('Song generated successfully! You can find it in the Recordings tab.');
                 setActiveTab('recordings');
             } else {
                 setSuggestionError('Failed to generate audio. Please try again.');
